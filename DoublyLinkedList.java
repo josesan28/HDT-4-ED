@@ -1,19 +1,23 @@
-public class SinglyLinkedList<T> extends List<T> {
+public class DoublyLinkedList<T> extends List<T>{
 
-    public static class Nodo<T>{
+    public static class Node<T> {
         T data;
         Node<T> next;
+        Node<T> prev;
 
-        public Nodo(T data){
+        public Node(T data){
             this.data = data;
             this.next = null;
+            this.prev = null;
         }
     }
 
     protected Node<T> head;
+    protected Node<T> tail;
 
-    public SinglyLinkedList(){
+    public DoublyLinkedList (){
         this.head = null;
+        this.tail = null;
         this.size = 0;
     }
 
@@ -22,13 +26,12 @@ public class SinglyLinkedList<T> extends List<T> {
         Node<T> nuevoNode = new Node<T>(value);
         if(head == null){
             head = nuevoNode;
+            tail = nuevoNode;
         }
         else{
-            Node<T> actual = head;
-            while (actual.next != null){
-                actual = actual.next;
-            }
-            actual.next = nuevoNode;
+            tail.next = nuevoNode;
+            nuevoNode.prev = tail;
+            tail = nuevoNode;
         }
         size++;
     }
@@ -39,16 +42,14 @@ public class SinglyLinkedList<T> extends List<T> {
             throw new IndexOutOfBoundsException();
         }
         Node<T> actual = head;
-        Node<T> previo = null;
         for (int i = 0; i < index; i++){
-            previo = actual;
             actual = actual.next;
         }
-        if(previo == null){
-            head = actual.next;
+        if(actual.prev != null){
+            actual.prev.next = actual.next;
         }
         else{
-            previo.next = actual.next;
+            tail = actual.prev;
         }
         size--;
         return actual.data;
@@ -59,10 +60,6 @@ public class SinglyLinkedList<T> extends List<T> {
         if (head == null){
             throw new IllegalStateException("Pa, si esta vacia, que vas a sacar?");
         }
-        Node<T> actual = head;
-        while (actual.next != null) {
-        actual = actual.next;
-        }
-        return actual.data;
+        return tail.data;
     }
 }
