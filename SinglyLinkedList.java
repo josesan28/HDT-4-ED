@@ -3,6 +3,11 @@ public class SinglyLinkedList<T> extends List<T> {
     public static class Nodo<T>{
         T data;
         Node<T> next;
+
+        public Nodo(T data){
+            this.data = data;
+            this.next = null;
+        }
     }
 
     protected Node<T> head;
@@ -47,5 +52,13 @@ public class SinglyLinkedList<T> extends List<T> {
         }
         size--;
         return actual.data;
+    }
+
+    @Override
+    public T peek(){
+        if (head == null){
+            throw new IllegalStateException("Pa, si esta vacia, que vas a sacar?");
+        }
+        return head.data;
     }
 }
