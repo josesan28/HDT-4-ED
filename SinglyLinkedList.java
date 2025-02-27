@@ -1,4 +1,4 @@
-public class SinglyLinkedList<T> extends List<T> {
+public class SinglyLinkedList<T> extends List<T> implements IList<T> {
 
     public static class Nodo<T>{
         T data;
@@ -64,5 +64,23 @@ public class SinglyLinkedList<T> extends List<T> {
         actual = actual.next;
         }
         return actual.data;
+    }
+
+    @Override
+    public void push(T data) {
+        add(data);
+    }
+
+    @Override
+    public T pop() {
+        if (isEmpty()){
+            throw new IllegalStateException("Pa, si esta vacia, que vas a sacar?");
+        }
+        return remove(size - 1);
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return head == null;
     }
 }

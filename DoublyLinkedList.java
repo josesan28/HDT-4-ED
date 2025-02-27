@@ -1,4 +1,4 @@
-public class DoublyLinkedList<T> extends List<T>{
+public class DoublyLinkedList<T> extends List<T> implements IList<T>{
 
     public static class Node<T> {
         T data;
@@ -61,5 +61,23 @@ public class DoublyLinkedList<T> extends List<T>{
             throw new IllegalStateException("Pa, si esta vacia, que vas a sacar?");
         }
         return tail.data;
+    }
+
+    @Override
+    public void push(T data) {
+        add(data);
+    }
+
+    @Override
+    public T pop() {
+        if(isEmpty()){
+        throw new IllegalStateException("Pa, si esta vacia, que vas a sacar?");
+        }
+        return remove(size - 1);
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return head == null;
     }
 }

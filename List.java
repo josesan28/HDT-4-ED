@@ -1,4 +1,4 @@
-public abstract class List<T> implements IList<T> {
+public abstract class List<T>implements IStack<T> {
     
     protected int size;
     
