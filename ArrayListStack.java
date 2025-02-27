@@ -42,4 +42,16 @@ public class ArrayListStack<T> extends Stack<T> {
         return Array.isEmpty();
     }
 
+     /**
+      * Este método devuelve el valor que se encuentra en la parte superior de la stack
+      * @return el valor que se encuentra en la parte superior de la stack
+      * @throws IllegalStateException si la pila esta vacía
+      */
+    @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new IllegalStateException("La stack está vacía");
+        }
+        return Array.get(size -1);
+    }
 }
