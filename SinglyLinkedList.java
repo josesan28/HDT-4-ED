@@ -1,0 +1,51 @@
+public class SinglyLinkedList<T> extends List<T> {
+
+    public static class Nodo<T>{
+        T data;
+        Node<T> next;
+    }
+
+    protected Node<T> head;
+
+    public SinglyLinkedList(){
+        this.head = null;
+        this.size = 0;
+    }
+
+    @Override
+    public void add(T value) {
+        Node<T> nuevoNode = new Node<T>(value);
+        if(head == null){
+            head = nuevoNode;
+        }
+        else{
+            Node<T> actual = head;
+            while (actual.next != null){
+                actual = actual.next;
+            }
+            actual.next = nuevoNode;
+        }
+        size++;
+    }
+
+    @Override
+    public T remove(int index) {
+        if(index < 0 || index >= size){
+            throw new IndexOutOfBoundsException();
+        }
+        Node<T> actual = head;
+        Node<T> previo = null;
+        for (int i = 0; i < index; i++){
+            previo = actual;
+            actual = actual.next;
+        }
+        if(previo == null){
+            head = actual.next;
+        }
+        else{
+            previo.next = actual.next;
+        }
+        size--;
+        return actual.data;
+    }
+}
