@@ -5,14 +5,15 @@
 
 public class DoublyLinkedList<T> extends List<T> implements IList<T>{
 
-    /**
-     * Metodo constructor de los nodos
-     */
+    
     public static class Node<T> {
         T data;
         Node<T> next;
         Node<T> prev;
 
+        /**
+         * Metodo constructor de los nodos
+        */
         public Node(T data){
             this.data = data;
             this.next = null;
