@@ -26,8 +26,8 @@ public class Calculator {
     
     // Método que realiza la operación aritmética
     public Number operation(char operator, Number value1, Number value2) {
-        int a = value1.intValue();
-        int b = value2.intValue();
+        int b = value1.intValue();
+        int a = value2.intValue();
         int resultado;
 
         switch (operator) {
