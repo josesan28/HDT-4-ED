@@ -1,3 +1,11 @@
+/**
+ *  @author José Manuel Sanchez Hernández - 24092, Josué Antonio Isaac García Barrera - 24918 y Jose Alberto Abril Suchite 24585
+ *  @version 1.0
+ *  Descripción: Clase que implementa una pila con un vector
+ *  Fecha de creación: 26/02/2025
+ *  Fecha de última modificación: 27/02/2025
+ */
+
 public class VectorStack<T> extends Stack<T>{
     private Node<T> top;
     private int size;
