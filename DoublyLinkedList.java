@@ -58,7 +58,7 @@ public class DoublyLinkedList<T> extends List<T> implements IList<T>{
     @Override
     public T peek(){
         if (head == null){
-            throw new IllegalStateException("Pa, si esta vacia, que vas a sacar?");
+            throw new IllegalStateException("La pila está vacía");
         }
         return tail.data;
     }
@@ -71,7 +71,7 @@ public class DoublyLinkedList<T> extends List<T> implements IList<T>{
     @Override
     public T pop() {
         if(isEmpty()){
-        throw new IllegalStateException("Pa, si esta vacia, que vas a sacar?");
+        throw new IllegalStateException("La pila está vacía");
         }
         return remove(size - 1);
     }

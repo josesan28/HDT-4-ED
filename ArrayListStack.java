@@ -7,8 +7,7 @@ public class ArrayListStack<T> extends Stack<T> {
          * Constructor
          */
         public ArrayListStack() {
-            this.size = Array.size();
-            Array= new ArrayList<T>(size);
+            Array= new ArrayList<T>();
         }
     
     /**
@@ -30,7 +29,7 @@ public class ArrayListStack<T> extends Stack<T> {
         if (isEmpty()) {
             throw new IllegalStateException("La stack está vacía");
         }  
-        return Array.get(size -1);
+        return Array.remove(Array.size() - 1);
     }
 
     /**
@@ -52,6 +51,6 @@ public class ArrayListStack<T> extends Stack<T> {
         if (isEmpty()) {
             throw new IllegalStateException("La stack está vacía");
         }
-        return Array.get(size -1);
+        return Array.get(Array.size() - 1);
     }
 }

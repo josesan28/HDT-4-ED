@@ -36,7 +36,7 @@ public class Calculator {
         return resultado;
     } 
 
-    public String infixToPostfix(String infix, Stack<Character> stack) {
+    public String infixToPostfix(String infix, IStack<Character> stack) {
         StringBuilder postfix = new StringBuilder();
         stack.push('#');
 
@@ -51,15 +51,18 @@ public class Calculator {
                 stack.push(ch);
             }
 
-            else if (ch == ')') {
-                while (stack.isEmpty() == false && stack.peek() != '(') {
+            else if (ch == ')' ) {
+                while (stack.isEmpty() == false && stack.peek() != '(' && stack.peek() != '#') {
                     postfix.append(stack.pop()).append(" ");
                 }
-                stack.pop();
+
+                if (stack.isEmpty() == false && stack.peek() == '(') {
+                    stack.pop();
+                }
             }  
 
             else {
-                while (stack.isEmpty() == false && precedence(ch) <= precedence(stack.peek())) {
+                while (stack.isEmpty() == false && precedence(ch) <= precedence(stack.peek()) && stack.peek() != '#' && stack.peek() != '(') {
                     postfix.append(stack.pop()).append(" ");
                 }
                 stack.push(ch);
