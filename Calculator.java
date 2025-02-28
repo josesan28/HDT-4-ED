@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  *  @author José Manuel Sanchez Hernández - 24092, Josué Antonio Isaac García Barrera - 24918 y Jose Alberto Abril Suchite 24585
  *  @version 1.0
@@ -58,7 +60,12 @@ public class Calculator {
             char ch = infix.charAt(i);
 
             if (Character.isLetterOrDigit(ch)) {
-                postfix.append(ch).append(" ");
+                while (i < infix.length() && Character.isLetterOrDigit(infix.charAt(i))) {
+                    postfix.append(infix.charAt(i));
+                    i++;
+                }
+                postfix.append(" ");
+                i--;
             }
 
             else if (ch == '(' ) {
@@ -107,5 +114,29 @@ public class Calculator {
         else {
             return 0;
         }
+    }
+
+    /**
+     * Método que evalúa una expresión postfix
+     * @param operation la expresión postfix
+     * @param stack la pila que se utilizará para la evaluación
+     * @return el resultado de la evaluación
+     */
+    public int evaluatePostfix(String operation, IStack<Integer> stack) {
+        Scanner scanner = new Scanner(operation);
+
+        while (scanner.hasNext()) {
+            if (scanner.hasNextInt()) {
+                stack.push(scanner.nextInt());
+            } else {
+                char operator = scanner.next().charAt(0);
+                int b = stack.pop();
+                int a = stack.pop();
+                int result = operation(operator, Integer.valueOf(a), Integer.valueOf(b)).intValue();
+                stack.push(result);
+            }
+        }
+        scanner.close();
+        return stack.pop();
     }
 }
