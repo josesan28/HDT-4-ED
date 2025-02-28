@@ -49,6 +49,12 @@ public class DoublyLinkedList<T> extends List<T> implements IList<T>{
             actual.prev.next = actual.next;
         }
         else{
+            head = actual.next;
+        }
+        if(actual.next != null) {
+            actual.next.prev = actual.prev;
+        } 
+        else{ 
             tail = actual.prev;
         }
         size--;
