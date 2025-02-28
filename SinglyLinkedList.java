@@ -1,5 +1,13 @@
+/**
+ * Clase que implementa una SinglyLinkedList, que extiende la clase "List" 
+ * e llega a implementar la interfaz "IList"
+ */
+
 public class SinglyLinkedList<T> extends List<T> implements IList<T> {
 
+    /**
+     * Metodo constructor de los nodos
+     */
     public static class Nodo<T>{
         T data;
         Node<T> next;
@@ -12,11 +20,18 @@ public class SinglyLinkedList<T> extends List<T> implements IList<T> {
 
     protected Node<T> head;
 
+    /**
+     * Metodo constructor de la SinglyLinkedlist
+     */
     public SinglyLinkedList(){
         this.head = null;
         this.size = 0;
     }
 
+    /**
+     * Metodo que agrega un elemento al final de la lista
+     * @param value, es el valor que se va a agregar a la lista
+     */
     @Override
     public void add(T value) {
         Node<T> nuevoNode = new Node<T>(value);
@@ -33,6 +48,11 @@ public class SinglyLinkedList<T> extends List<T> implements IList<T> {
         size++;
     }
 
+    /**
+     * Metodo que elimina un elemento en la posicion indicada
+     * @param index, es la posicion del elemento a eliminar
+     * @return el dato del nodo eliminado
+     */
     @Override
     public T remove(int index) {
         if(index < 0 || index >= size){
@@ -54,6 +74,10 @@ public class SinglyLinkedList<T> extends List<T> implements IList<T> {
         return actual.data;
     }
 
+    /**
+     * Metodo que obtiene el ultimo elemento de la lista
+     * @return el ultimo elemnto de la lista
+     */
     @Override
     public T peek(){
         if (head == null){
@@ -66,11 +90,18 @@ public class SinglyLinkedList<T> extends List<T> implements IList<T> {
         return actual.data;
     }
 
+     /**
+     * Metodo que agrega un elemento al final de la lista
+     */
     @Override
     public void push(T data) {
         add(data);
     }
 
+    /**
+     * Metodo que elimina y devuelve el ultumo elemnto de la lista
+     * @return el ultimo elemento de la lisra
+     */
     @Override
     public T pop() {
         if (isEmpty()){
@@ -79,6 +110,10 @@ public class SinglyLinkedList<T> extends List<T> implements IList<T> {
         return remove(size - 1);
     }
 
+    /**
+     * Metodo que verifica si la lista esta vacia
+     * @return true si la lista esta vacio o false si no esta vacia
+     */
     @Override
     public boolean isEmpty() {
         return head == null;
