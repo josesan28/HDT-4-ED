@@ -5,13 +5,13 @@
 
 public class SinglyLinkedList<T> extends List<T> implements IList<T> {
 
-    /**
-     * Metodo constructor de los nodos
-     */
     public static class Nodo<T>{
         T data;
         Node<T> next;
 
+        /**
+        * Metodo constructor de los nodos
+        */
         public Nodo(T data){
             this.data = data;
             this.next = null;
