@@ -33,14 +33,14 @@ public class StackFactory<T> {
      * @param type
      * @return el stack creado
      */
-    public IStack<T> createStack(StackType type) {
+    public IStack<T> createStack(StackType type, ListFactory.ListType listType) {
         switch (type) {
             case Array:
                 return new ArrayListStack<>();
             case Vector:
                 return new VectorStack<>();
             case List:
-                return new ListFactory<T>().createList();
+                return new ListFactory<T>().createList(listType);
             default:
                 throw new IllegalArgumentException("Tipo de stack no soportado: " + type);
         }

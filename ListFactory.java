@@ -8,7 +8,7 @@ public class ListFactory<T> {
         DoublyLinkedList(2);
 
         private final int value;
-
+        
         ListType(int value) {
             this.value = value;
         }
@@ -25,14 +25,6 @@ public class ListFactory<T> {
             }
             throw new IllegalArgumentException("Valor no válido: " + value);
         }
-    }
-
-    /**
-     * Método para crear una lista predeterminada
-     * @return la lista creada
-     */	
-    public IStack<T> createList() {
-        return new SinglyLinkedList<>();
     }
 
     /**
